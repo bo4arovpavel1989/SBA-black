@@ -1,0 +1,25 @@
+{{date}}
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Сайт</th>
+	  <th>Источник</th>
+      <th>Рейтинг</th>
+      <th>Кол-во посещений</th>
+      <th>Время посещения</th>
+	  <th>Кол-во страниц</th>
+	  <th>процент отказа</th>
+    </tr>
+  </thead>
+{{#each site}}
+	<tr>
+	<td>{{stats.site}}</td>
+	<td>{{stats.parser}}</td>
+	<td>{{stats.rank}}</td>
+	<td>{{stats.totalVisits}}</td>
+	<td>{{stats.visitTime}}</td>
+	<td>{{stats.pagesPerVisit}}</td>
+	<td>{{stats.bounceRate}}</td>
+	</tr>
+{{/each}}
+</table>
