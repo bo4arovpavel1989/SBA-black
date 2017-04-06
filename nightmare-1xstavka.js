@@ -16,8 +16,9 @@ nightmare
 	var lines=$('.betsCon').get();
 	lines.forEach((line)=>{
 		try {
-		let sport, sportType, win, draw, away;
+		let betType, sport, sportType, win, draw, away;
 		//console.log(line);
+		betType = line.parent.parent.parent.parent.children[1].children[1].attribs['data-top10'];
 		sport = line.prev.prev.children[5].attribs.href;
 		sportType=sport.split('/')[1];
 		//console.log(sportType);
@@ -29,12 +30,12 @@ nightmare
 				if(draw != '-' && draw != 0) marja += 100/parseFloat(draw);
 				if(away != '-' && away != 0) marja += 100/parseFloat(away);
 				marja = marja -100;
-				console.log(sportType + ': ' + win + ' - ' + draw + ' - ' + away + '. Marja = ' + marja);
+				console.log(betType + ': ' + sportType + ': ' + win + ' - ' + draw + ' - ' + away + '. Marja = ' + marja);
 		} catch(e) {}
 	});
   })
   .catch(function (error) {
-	console.log('no event for sport №');
+	console.log(error);
   });
 
 
