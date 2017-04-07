@@ -19,38 +19,58 @@ nightmare
 		 try {
 		 console.log(link.attribs.id);
 		 linksToClick.push(link.attribs.id);
-		 parseBaltBet(linksToClick);
 		 } catch(e){}
-	 })
-	
+	 });
+	parseBaltBet(linksToClick[0]);	
   })
   .catch(function (error) {
 	console.log(error);
   });
 
-function parseBaltBet(linkArray){
+function parseBaltBet(link){
    nightmare
   .goto('https://baltbet.ru/')
   .useragent("Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36")
-  .click('a#' + linkArray[i])
+  .refresh()
+  .wait(2000)
+  .click('a#' + link)
   .wait(2000)
   .evaluate(function () {
 	return document.body.innerHTML;
   })
   .then(function (body) {
     var $ = cheerio.load(body);
-	let lines=$('table.liv').get();
-	lines.forEach((line)=>{
-		console.log(line);
-	})
+	let line=$('table.lv').get();
+	line=line[0];
+		try{
+		let win, draw, away;
+		//console.log(line);
+		let sport = line.children[0].children[0].children[0].children[0].data;
+		sport=sport.split('. ')[1];
+		//console.log(sport);
+		win=line.children[1].children[0].children[2].children[0].children[0].data;
+		let isDraw=line.children[0].children[0].children[2].children[0].data;
+		if (isDraw=='X') draw = line.children[1].children[0].children[3].children[0].children[0].data;
+		else {draw='-'; away=line.children[1].children[0].children[3].children[0].children[0].data;}
+		if(draw !='-') away=line.children[1].children[0].children[4].children[0].children[0].data;
+		win=win.replace(',', '.');
+		draw=draw.replace(',', '.');
+		away=away.replace(',', '.');
+		let marja = 0;
+				if(win != '-' && win != 0) marja += 100/parseFloat(win);
+				if(draw != '-' && draw != 0) marja += 100/parseFloat(draw);
+				if(away != '-' && away != 0) marja += 100/parseFloat(away);
+				marja = marja -100;
+				console.log(sport + ': ' + win + ' - ' + draw + ' - ' + away + '. Marja = ' + marja);	
+		}catch(e){}
 		i++;
-		if(i<linkArray.length) parseBaltBet(linkArray)
+		console.log(i)
+		if(i<linksToClick.length) parseBaltBet(linksToClick[i])
 	
   })
   .catch(function (error) {
-	console.log(error);
 	i++;
-	if(i<linkArray.length) parseBaltBet(linkArray)
+	if(i<linksToClick.length) parseBaltBet(linksToClick[i])
   });
 }
 
