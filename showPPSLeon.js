@@ -1,5 +1,11 @@
 var BkPPS = require('./lib/models/mongoModel.js').BkPPS;
+var BkPPSCoordinates = require('./lib/models/mongoModel.js').BkPPSCoordinates;
 
+BkPPSCoordinates.find({}, function(err, rep){
+	console.log(rep);
+});
+
+/*
 BkPPS.find({bk:'leon'}, function(err, rep){
 	console.log('leon');
 	console.log(rep.length);
@@ -35,4 +41,4 @@ BkPPS.find({bk:'1xstavka'}, function(err, rep){
 
 
 
-//BkPPS.find({}).remove().exec();
+//BkPPS.find({}).remove().exec();*/
