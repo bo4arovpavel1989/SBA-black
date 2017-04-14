@@ -2,7 +2,7 @@ var BkPPS = require('./lib/models/mongoModel.js').BkPPS;
 var BkPPSCoordinates = require('./lib/models/mongoModel.js').BkPPSCoordinates;
 
 BkPPSCoordinates.find({}, function(err, rep){
-	console.log(rep[1000].data.geometry);
+	console.log(rep[1000].data);
 });
 
 
