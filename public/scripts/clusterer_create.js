@@ -1,8 +1,18 @@
 var points=[];
 
-function getPPSCoordinates(){
+function chooseBK(){
+	$('#bkSelect').on('change', function(e){
+		e.preventDefault();
+		var bk = $(this).val();
+		getPPSCoordinates(bk);
+	});
+}
+
+function getPPSCoordinates(bk){
+	points=[];
+	$('#map').empty();
 	$.ajax({
-		url: '/bkpps/ppscoordinatesbaltbet.json',
+		url: '/bkpps/ppscoordinates' + bk + '.json',
 		dataType: 'json',
 		success: function(data){
 			data.forEach(dat=>{
@@ -58,7 +68,6 @@ function drawMap(){
 
 ymaps.ready(function () {
 	//todo - function of getting pps coordinates from db, depending on filter oresets
-	getPPSCoordinates();
-	
+	chooseBK();
  
 });
