@@ -62,7 +62,7 @@ function drawMap(){
     myMap.geoObjects.add(clusterer);
 
     myMap.setBounds(clusterer.getBounds(), {
-        checkZoomRange: false
+        checkZoomRange: true
     });
 }
 
