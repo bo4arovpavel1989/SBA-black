@@ -1,10 +1,22 @@
 var BkPPS = require('./lib/models/mongoModel.js').BkPPS;
 var BkPPSCoordinates = require('./lib/models/mongoModel.js').BkPPSCoordinates;
+var fs=require('fs-extra');
 
-BkPPSCoordinates.find({}, function(err, rep){
-	console.log(rep[1000].data);
+let bks=['olimp', 'leon', '888', 'winline', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
+
+bks.forEach(bk=>{
+	BkPPSCoordinates.find({bk: bk}, function(err, rep){
+		rep=JSON.stringify(rep);
+		fs.writeFile('bkpps/ppscoordinates' + bk + '.json', rep);
+	});
 });
 
+
+
+
+
+
+/*
 
 BkPPS.find({bk:'leon'}, function(err, rep){
 	console.log('leon');
@@ -38,7 +50,7 @@ BkPPS.find({bk:'1xstavka'}, function(err, rep){
 	console.log('1xstavka');
 	console.log(rep.length);
 });
-
+*/
 
 //BkPPSCoordinates.find({}).remove().exec();
 //BkPPS.find({}).remove().exec();*/
