@@ -16,7 +16,7 @@ function getPPSCoordinates(bk){
 		dataType: 'json',
 		success: function(data){
 			data.forEach(dat=>{
-				points.push({bk: dat.bk, coords:dat.data.geometry.coordinates});
+				points.push({bk: dat.bk, coords:dat.data.geometry.coordinates, description: dat.data.properties.description});
 			})
 			drawMap();
 		}		
@@ -39,10 +39,10 @@ function drawMap(){
             clusterHideIconOnBalloonOpen: true,
             geoObjectHideIconOnBalloonOpen: false
         }),
-            getPointData = function (index, bk) {
+            getPointData = function (index, bk, desc) {
             return {
-                balloonContentBody: 'ППС ' + bk,
-                clusterCaption: 'ППС ' + bk
+                balloonContentBody: 'ППС ' + bk + '\r\n' + desc,
+                clusterCaption: 'ППС ' + bk + '\n\r' + desc
             };
         },
             getPointOptions = function () {
@@ -52,7 +52,7 @@ function drawMap(){
         },
         geoObjects = [];
     for(var i = 0, len = points.length; i < len; i++) {
-        geoObjects[i] = new ymaps.Placemark(points[i].coords, getPointData(i, points[i].bk), getPointOptions());
+        geoObjects[i] = new ymaps.Placemark(points[i].coords, getPointData(i, points[i].bk, points[i].description), getPointOptions());
     }
     clusterer.options.set({
         gridSize: 80,
