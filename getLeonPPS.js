@@ -1,6 +1,6 @@
 var fs = require("fs");
 var BkPPS = require('./lib/models/mongoModel.js').BkPPS;
- 
+/* commented everything in purpose not to write extra data
 // асинхронное чтение
 fs.readFile("888pps.txt", "utf8", 
              function(error,data){
@@ -176,4 +176,4 @@ fs.readFile("bkolimppps.txt", "utf8",
 					  })
 				  }
 				});
-});
+});*/

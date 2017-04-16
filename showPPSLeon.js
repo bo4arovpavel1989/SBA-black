@@ -6,10 +6,20 @@ let bks=['olimp', 'leon', '888', 'winline', 'fonbet', 'baltbet', '1xstavka', 'li
 
 bks.forEach(bk=>{
 	BkPPSCoordinates.find({bk: bk}, function(err, rep){
+		console.log(rep[10].data);
+	});
+});
+
+
+/* commented in prupose not to write extra data
+let bks=['olimp', 'leon', '888', 'winline', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
+
+bks.forEach(bk=>{
+	BkPPSCoordinates.find({bk: bk}, function(err, rep){
 		rep=JSON.stringify(rep);
 		fs.writeFile('bkpps/ppscoordinates' + bk + '.json', rep);
 	});
-});
+});*/
 
 
 

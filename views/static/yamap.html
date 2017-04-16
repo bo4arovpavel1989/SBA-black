@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Примеры. Добавление на карту кластеризатора меток</title>
+    <title>SBA - PPS map</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Если вы используете API локально, то в URL ресурса необходимо указывать протокол в стандартном виде (http://...)-->
 	<script src="api/jquery2.js"></script>
     <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script src="scripts/clusterer_create.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
 	<style>
         html, body, #map {
             width: 100%; height: 100%; padding: 0; margin: 0;
@@ -14,6 +15,18 @@
     </style>
 </head>
 <body>
+		<select class="form-control" id='bkSelect' class='form-control'>
+		<option value='leon'>Выберите БК</option>
+		<option value='leon'>Леон</option>
+		<option value='fonbet'>Фонбет</option>
+		<option value='olimp'>Олимп</option>
+		<option value='baltbet'>Балтбет</option>
+		<option value='1xstavka'>1х ставка</option>
+		<option value='ligastavok'>Лига ставок</option>
+		<option value='winline'>Винлайн</option>
+		<option value='888'>888</option>
+		<option value='123'>Где долбят в очко</option>
+		</select>
 <div id="map"></div>
 </body>
 </html>
