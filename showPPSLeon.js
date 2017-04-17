@@ -1,16 +1,40 @@
 var BkPPS = require('./lib/models/mongoModel.js').BkPPS;
 var BkPPSCoordinates = require('./lib/models/mongoModel.js').BkPPSCoordinates;
 var fs=require('fs-extra');
+var CitiesStats = require('./lib/models/mongoModel.js').CitiesStats;
+var cities=[];
 
-let bks=['olimp', 'leon', '888', 'winline', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
-
-bks.forEach(bk=>{
-	BkPPSCoordinates.find({bk: bk}, function(err, rep){
-		console.log(rep[10].data);
+CitiesStats.find({}, function(err, rep){
+	rep.forEach(city=>{
+		console.log(city.name);
+		BkPPSCoordinates.find({'data.properties.description': city.name}, function(err, reps){
+			let bkQuantity = reps.length;
+			CitiesStats.update({name: city.name}, {$set: {bkQuantity: bkQuantity}}).exec();
+		});
 	});
 });
 
 
+
+
+/*
+let bks=['olimp', 'leon', '888', 'winline', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
+
+bks.forEach(bk=>{
+	BkPPSCoordinates.find({bk: bk}, function(err, reps){
+		reps.forEach(rep=>{
+			console.log(rep.data.properties.description)
+			var city = rep.data.properties.description;
+			if(cities.indexOf(city) == -1) {
+				cities.push(city);
+				let cityStat = new CitiesStats({name: city}).save();
+			}
+			
+		});
+	});
+});
+
+*/
 /* commented in prupose not to write extra data
 let bks=['olimp', 'leon', '888', 'winline', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
 
