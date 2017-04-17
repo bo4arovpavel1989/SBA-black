@@ -4,6 +4,23 @@ var fs=require('fs-extra');
 var CitiesStats = require('./lib/models/mongoModel.js').CitiesStats;
 var cities=[];
 
+
+/*
+CitiesStats.find({}).sort({name: 1}).exec(function(err, reps){
+	
+	reps.forEach(rep=>{
+		console.log(rep.bkRelation);
+		let relation='';
+		rep.bkRelation.forEach(character=>{
+			if(character.bkQuantity!=0) relation += ' ' + character.bk + ' - ' + character.bkQuantity
+		});
+		fs.appendFile('ppsQuantityAndRelation.dat', rep.name + ' - ' + rep.bkQuantity + ' всего. '+ relation + '\r\n');
+	});
+});*/
+
+
+
+/*
 CitiesStats.find({}, function(err, rep){
 	rep.forEach(city=>{
 		console.log(city.name);
@@ -12,29 +29,29 @@ CitiesStats.find({}, function(err, rep){
 			CitiesStats.update({name: city.name}, {$set: {bkQuantity: bkQuantity}}).exec();
 		});
 	});
-});
+});*/
 
 
 
 
-/*
+
 let bks=['olimp', 'leon', '888', 'winline', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
 
 bks.forEach(bk=>{
 	BkPPSCoordinates.find({bk: bk}, function(err, reps){
 		reps.forEach(rep=>{
-			console.log(rep.data.properties.description)
-			var city = rep.data.properties.description;
+			console.log(rep.data.properties.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea)
+			/*var city = rep.data.properties.description;
 			if(cities.indexOf(city) == -1) {
 				cities.push(city);
 				let cityStat = new CitiesStats({name: city}).save();
-			}
+			}*/
 			
 		});
 	});
 });
 
-*/
+
 /* commented in prupose not to write extra data
 let bks=['olimp', 'leon', '888', 'winline', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
 
