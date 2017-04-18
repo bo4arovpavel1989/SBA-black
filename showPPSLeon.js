@@ -2,8 +2,15 @@ var BkPPS = require('./lib/models/mongoModel.js').BkPPS;
 var BkPPSCoordinates = require('./lib/models/mongoModel.js').BkPPSCoordinates;
 var fs=require('fs-extra');
 var CitiesStats = require('./lib/models/mongoModel.js').CitiesStats;
+var CitiesInfo = require('./lib/models/mongoModel.js').CitiesInfo;
 var cities=[];
 
+CitiesInfo.find({}, (err, reps)=>{
+	reps.forEach(rep=>{
+		fs.appendFile('citypopulation.dat', rep.name + ' - ' + rep.population + '\r\n');
+	});
+	
+})
 
 /*
 CitiesStats.find({}).sort({name: 1}).exec(function(err, reps){
@@ -33,7 +40,7 @@ CitiesStats.find({}, function(err, rep){
 
 
 
-
+/*
 
 let bks=['olimp', 'leon', '888', 'winline', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
 
@@ -41,15 +48,15 @@ bks.forEach(bk=>{
 	BkPPSCoordinates.find({bk: bk}, function(err, reps){
 		reps.forEach(rep=>{
 			console.log(rep.data.properties.metaDataProperty.GeocoderMetaData.AddressDetails.Country.AdministrativeArea)
-			/*var city = rep.data.properties.description;
+			var city = rep.data.properties.description;
 			if(cities.indexOf(city) == -1) {
 				cities.push(city);
 				let cityStat = new CitiesStats({name: city}).save();
-			}*/
+			}
 			
 		});
 	});
-});
+});*/
 
 
 /* commented in prupose not to write extra data
