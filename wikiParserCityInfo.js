@@ -37,7 +37,7 @@ String.prototype.replaceAll = function(search, replace){
 			population = population.replaceAll(/\s/g, '');
 			//population = Number(population);
 			console.log(population);
-			//fs.appendFile('citypopulation.dat', city + ' - ' + population + '\r\n');
+			fs.appendFile('citypopulation.dat', city + ' - ' + population + '\r\n');
 			if(population !== NaN) {var citiesInfo = new CitiesInfo({name: city, population: population}).save();}
 			
 			} catch(e) {console.log(e)}

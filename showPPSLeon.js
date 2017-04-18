@@ -7,13 +7,16 @@ var cities=[];
 
 CitiesInfo.find({}, (err, reps)=>{
 	reps.forEach(rep=>{
-		fs.appendFile('citypopulation.dat', rep.name + ' - ' + rep.population + '\r\n');
+		//fs.appendFile('citypopulation.dat', rep.name + ' - ' + rep.population + '\r\n');
+		
+		
+		
 	});
 	
 })
 
-/*
-CitiesStats.find({}).sort({name: 1}).exec(function(err, reps){
+
+CitiesInfo.find({}).sort({name: 1}).exec(function(err, reps){
 	
 	reps.forEach(rep=>{
 		console.log(rep.bkRelation);
@@ -21,9 +24,9 @@ CitiesStats.find({}).sort({name: 1}).exec(function(err, reps){
 		rep.bkRelation.forEach(character=>{
 			if(character.bkQuantity!=0) relation += ' ' + character.bk + ' - ' + character.bkQuantity
 		});
-		fs.appendFile('ppsQuantityAndRelation.dat', rep.name + ' - ' + rep.bkQuantity + ' всего. '+ relation + '\r\n');
+		fs.appendFile('ppsQuantityAndRelation.dat', rep.name + ' - ' + rep.population + 'чел. - ' + rep.bkQuantity + ' всего. '+ relation + '\r\n');
 	});
-});*/
+});
 
 
 
