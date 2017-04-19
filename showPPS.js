@@ -5,7 +5,17 @@ var CitiesStats = require('./lib/models/mongoModel.js').CitiesStats;
 var CitiesInfo = require('./lib/models/mongoModel.js').CitiesInfo;
 var cities=[];
 
+BkPPS.find({}, function(err, reps){
+	reps.forEach(rep=>{
+		fs.appendFile('BKPPS.dat', rep +  '\r\n');
+	});
+});
+BkPPSCoordinates.find({}, function(err, rep){
+	console.log(rep.length);
+});
 
+
+/*
 CitiesInfo.find({}).sort({name: 1}).exec(function(err, reps){
 	
 	reps.forEach(rep=>{
@@ -16,7 +26,7 @@ CitiesInfo.find({}).sort({name: 1}).exec(function(err, reps){
 		});
 		fs.appendFile('ppsQuantityAndRelation.dat', rep.name + ' - ' + rep.population + 'чел. - ' + rep.bkQuantity + ' всего. '+ relation + '\r\n');
 	});
-});
+});*/
 
 
 

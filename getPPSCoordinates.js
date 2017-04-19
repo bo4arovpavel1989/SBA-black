@@ -14,141 +14,25 @@ provider.getText = function (point) {
     return text;
 };
 
+
 var bks=['atlantik-mpps', 'betringpps', 'betrupps', 'digitalbettingpps', 'favoritpps', 'firmastompps', 'fortunapps', 'investcompcentrpps', 'investgarantpps',
-'johnygamepps', 'marathonpps', 'matchbetpps', 'melofonpps', 'panoramapps', 'rosbetpps', 'rosippodromipps', 'rusteletotpps', 'sportbetpps', 'starbetpps', 
-'williamhillpps', 'winlinepps'];
+'johnygamepps', 'marathonpps', 'matchbetpps', 'melofonpps', 'panoramapps', 'rosbetpps', 'rosippodromipps', 'rusteletotpps', 'sportbetpps', 'starbetpps', 'williamhillpps',
+ 'winlinepps', 'olimppps', 'leonpps', '888pps', 'fonbetpps', 'baltbetpps', '1xstavkapps', 'ligastavokpps'];
 
-bks.forEach(bk=>{
-	BkPPS.find({bk:bk}, function(err, rep){
+var j=0;
+getPPSCoord();
+function getPPSCoord(){
+BkPPS.find({bk:bks[j]}, function(err, rep){
 	geocoder.geocode(rep).then(res=>{
 		let i=0;
-		console.log('working');
+		console.log('working on ' + bks[j]);
+		var name = bks[j].slice(0, -3);
+		j++;
+		if(j<bks.length) getPPSCoord();
 		try{
 			res.result.features.forEach(point=>{
-				let bkPPS = new BkPPSCoordinates({bk:bk, data: point}).save();
-				console.log(i);
-				i++;
-			});
-		}catch(e){
-			console.log(e);
-			}
-	});
-	
-	});
-});
-
-
-
-/* commented everything in purpose to avoid accident run and writing extra data in database
-BkPPS.find({bk:'leon'}, function(err, rep){
-	geocoder.geocode(rep).then(res=>{
-		let i=0;
-		console.log('working');
-		try{
-			res.result.features.forEach(point=>{
-				let bkPPS = new BkPPSCoordinates({bk:'leon', data: point}).save();
-				console.log(i);
-				i++;
-			});
-		}catch(e){
-			console.log(e);
-			}
-	});
-	
-});
-
-BkPPS.find({bk:'888'}, function(err, rep){
-	geocoder.geocode(rep).then(res=>{
-		let i=0;
-		console.log('working');
-		try{
-			res.result.features.forEach(point=>{
-				let bkPPS = new BkPPSCoordinates({bk:'888', data: point}).save();
-				console.log(i);
-				i++;
-			});
-		}catch(e){
-			console.log(e);
-			}
-	});
-	
-});
-
-BkPPS.find({bk:'olimp'}, function(err, rep){
-	geocoder.geocode(rep).then(res=>{
-		let i=0;
-		console.log('working');
-		try{
-			res.result.features.forEach(point=>{
-				let bkPPS = new BkPPSCoordinates({bk:'olimp', data: point}).save();
-				console.log(i);
-				i++;
-			});
-		}catch(e){
-			console.log(e);
-			}
-	});
-	
-});
-
-BkPPS.find({bk:'fonbet'}, function(err, rep){
-	geocoder.geocode(rep).then(res=>{
-		let i=0;
-		console.log('working');
-		try{
-			res.result.features.forEach(point=>{
-				let bkPPS = new BkPPSCoordinates({bk:'fonbet', data: point}).save();
-				console.log(i);
-				i++;
-			});
-		}catch(e){
-			console.log(e);
-			}
-	});
-	
-});
-
-BkPPS.find({bk:'winline'}, function(err, rep){
-	geocoder.geocode(rep).then(res=>{
-		let i=0;
-		console.log('working');
-		try{
-			res.result.features.forEach(point=>{
-				let bkPPS = new BkPPSCoordinates({bk:'winline', data: point}).save();
-				console.log(i);
-				i++;
-			});
-		}catch(e){
-			console.log(e);
-			}
-	});
-	
-});
-
-BkPPS.find({bk:'1xstavka'}, function(err, rep){
-	geocoder.geocode(rep).then(res=>{
-		let i=0;
-		console.log('working');
-		try{
-			res.result.features.forEach(point=>{
-				let bkPPS = new BkPPSCoordinates({bk:'1xstavka', data: point}).save();
-				console.log(i);
-				i++;
-			});
-		}catch(e){
-			console.log(e);
-			}
-	});
-	});
-
-BkPPS.find({bk:'ligastavok'}, function(err, rep){
-	geocoder.geocode(rep).then(res=>{
-		let i=0;
-		console.log('working');
-		try{
-			res.result.features.forEach(point=>{
-				let bkPPS = new BkPPSCoordinates({bk:'ligastavok', data: point}).save();
-				console.log(i);
+				let bkPPS = new BkPPSCoordinates({bk:name, data: point}).save();
+				console.log(i + ' ' + name);
 				i++;
 			});
 		}catch(e){
@@ -156,20 +40,6 @@ BkPPS.find({bk:'ligastavok'}, function(err, rep){
 			}
 	});
 });
+}
 
-BkPPS.find({bk:'baltbet'}, function(err, rep){
-	geocoder.geocode(rep).then(res=>{
-		let i=0;
-		console.log('working');
-		try{
-			res.result.features.forEach(point=>{
-				let bkPPS = new BkPPSCoordinates({bk:'baltbet', data: point}).save();
-				console.log(i);
-				i++;
-			});
-		}catch(e){
-			console.log(e);
-			}
-	});
-	
-});*/
+
