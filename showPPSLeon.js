@@ -5,16 +5,6 @@ var CitiesStats = require('./lib/models/mongoModel.js').CitiesStats;
 var CitiesInfo = require('./lib/models/mongoModel.js').CitiesInfo;
 var cities=[];
 
-CitiesInfo.find({}, (err, reps)=>{
-	reps.forEach(rep=>{
-		//fs.appendFile('citypopulation.dat', rep.name + ' - ' + rep.population + '\r\n');
-		
-		
-		
-	});
-	
-})
-
 
 CitiesInfo.find({}).sort({name: 1}).exec(function(err, reps){
 	
@@ -60,6 +50,22 @@ bks.forEach(bk=>{
 		});
 	});
 });*/
+
+/*commented in prupose not to write extra data (second portion of pps)
+let bks=['atlantik-mpps', 'betringpps', 'betrupps', 'digitalbettingpps', 'favoritpps', 'firmastompps', 'fortunapps', 'investcompcentrpps', 'investgarantpps',
+'johnygamepps', 'marathonpps', 'matchbetpps', 'melofonpps', 'panoramapps', 'rosbetpps', 'rosippodromipps', 'rusteletotpps', 'sportbetpps', 'starbetpps', 
+'williamhillpps', 'winlinepps'];
+
+bks.forEach(bk=>{
+	BkPPSCoordinates.find({bk: bk}, function(err, rep){
+		rep=JSON.stringify(rep);
+		fs.writeFile('ppscoordinates' + bk + '.json', rep);
+	});
+});*/
+
+
+
+
 
 
 /* commented in prupose not to write extra data

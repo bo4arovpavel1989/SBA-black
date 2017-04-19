@@ -14,6 +14,31 @@ provider.getText = function (point) {
     return text;
 };
 
+var bks=['atlantik-mpps', 'betringpps', 'betrupps', 'digitalbettingpps', 'favoritpps', 'firmastompps', 'fortunapps', 'investcompcentrpps', 'investgarantpps',
+'johnygamepps', 'marathonpps', 'matchbetpps', 'melofonpps', 'panoramapps', 'rosbetpps', 'rosippodromipps', 'rusteletotpps', 'sportbetpps', 'starbetpps', 
+'williamhillpps', 'winlinepps'];
+
+bks.forEach(bk=>{
+	BkPPS.find({bk:bk}, function(err, rep){
+	geocoder.geocode(rep).then(res=>{
+		let i=0;
+		console.log('working');
+		try{
+			res.result.features.forEach(point=>{
+				let bkPPS = new BkPPSCoordinates({bk:bk, data: point}).save();
+				console.log(i);
+				i++;
+			});
+		}catch(e){
+			console.log(e);
+			}
+	});
+	
+	});
+});
+
+
+
 /* commented everything in purpose to avoid accident run and writing extra data in database
 BkPPS.find({bk:'leon'}, function(err, rep){
 	geocoder.geocode(rep).then(res=>{

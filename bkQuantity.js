@@ -29,7 +29,7 @@ bks.forEach(bk=>{
 });*/
 
 
-/*
+				//getting nimber of pps in each city
 	CitiesInfo.find({}).sort({name:1}).exec(function(err, rep){
 	rep.forEach(city=>{
 		let reg = new RegExp(city.name, "i")
@@ -39,9 +39,11 @@ bks.forEach(bk=>{
 		});
 	});		
 	});
-*/
 
-let bks=['olimp', 'leon', '888', 'winline', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
+/*
+let bks=['atlantik-mpps', 'betringpps', 'betrupps', 'digitalbettingpps', 'favoritpps', 'firmastompps', 'fortunapps', 'investcompcentrpps', 'investgarantpps',
+'johnygamepps', 'marathonpps', 'matchbetpps', 'melofonpps', 'panoramapps', 'rosbetpps', 'rosippodromipps', 'rusteletotpps', 'sportbetpps', 'starbetpps', 
+'williamhillpps', 'olimp', 'leon', '888', 'winline', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
 
 bks.forEach(bk=>{
 	CitiesInfo.find({}, function(err, rep){
@@ -55,4 +57,4 @@ bks.forEach(bk=>{
 	});
 });
 
-});
+});*/
