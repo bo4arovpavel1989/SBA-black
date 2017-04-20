@@ -13,7 +13,7 @@ nightmare
   .then(function (body) {
      var $ = cheerio.load(body);
 	 //console.log($.html());
-	var lines=$('.betsCon').get();
+	var lines=$('.c-bets').get();
 	lines.forEach((line)=>{
 		try {
 		let betType, sport, sportType, win, draw, away;
@@ -21,7 +21,7 @@ nightmare
 		betType = line.parent.parent.parent.parent.children[1].children[1].attribs['data-top10'];
 		sport = line.prev.prev.children[5].attribs.href;
 		sportType=sport.split('/')[1];
-		//console.log(sportType);
+		console.log(sportType);
 		win = line.children[1].children[0].attribs['data-coef'];if(win ==undefined) win='-';
 		draw = line.children[1].children[1].attribs['data-coef'];if(draw ==undefined) draw='-';
 		away = line.children[1].children[2].attribs['data-coef'];if(away ==undefined) away='-';
