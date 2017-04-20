@@ -1,13 +1,13 @@
 var fs = require("fs");
 var BkPPS = require('./lib/models/mongoModel.js').BkPPS;
-var bks=['atlantik-mpps', 'betringpps', 'betrupps', 'digitalbettingpps', 'favoritpps', 'firmastompps', 'fortunapps', 'investcompcentrpps', 'investgarantpps',
-'johnygamepps', 'marathonpps', 'matchbetpps', 'melofonpps', 'panoramapps', 'rosbetpps', 'rosippodromipps', 'rusteletotpps', 'sportbetpps', 'starbetpps', 
-'williamhillpps', 'winlinepps', 'olimppps', 'leonpps', '888pps', 'fonbetpps', 'baltbetpps', '1xstavkapps', 'ligastavokpps'];
+var bks=['atlantik-m', 'betring', 'betru', 'digitalbetting', 'favorit', 'firmastom', 'fortuna', 'investcompcentr', 'investgarant',
+'johnygame', 'marathon', 'matchbet', 'melofon', 'panorama', 'rosbet', 'rosippodromi', 'rusteletot', 'sportbet', 'starbet', 
+'williamhill', 'winline', 'olimp', 'leon', '888', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
 
 //parsing of pps addresses from txt files to mongoDB
 /*
 bks.forEach(bk=>{
-	fs.readFile("ppsAddressesFromFNS/" + bk + '.txt', "utf8", 
+	fs.readFile("ppsAddressesFromFNS/" + bk + 'pps.txt', "utf8", 
              function(error,data){
                 console.log("Асинхронное чтение файла");
                 if(error) throw error; // если возникла ошибка

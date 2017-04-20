@@ -15,9 +15,9 @@ provider.getText = function (point) {
 };
 
 
-var bks=['atlantik-mpps', 'betringpps', 'betrupps', 'digitalbettingpps', 'favoritpps', 'firmastompps', 'fortunapps', 'investcompcentrpps', 'investgarantpps',
-'johnygamepps', 'marathonpps', 'matchbetpps', 'melofonpps', 'panoramapps', 'rosbetpps', 'rosippodromipps', 'rusteletotpps', 'sportbetpps', 'starbetpps', 'williamhillpps',
- 'winlinepps', 'olimppps', 'leonpps', '888pps', 'fonbetpps', 'baltbetpps', '1xstavkapps', 'ligastavokpps'];
+var bks=['atlantik-m', 'betring', 'betru', 'digitalbetting', 'favorit', 'firmastom', 'fortuna', 'investcompcentr', 'investgarant',
+'johnygame', 'marathon', 'matchbet', 'melofon', 'panorama', 'rosbet', 'rosippodromi', 'rusteletot', 'sportbet', 'starbet', 
+'williamhill', 'winline', 'olimp', 'leon', '888', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
 
 var j=0;
 getPPSCoord();
@@ -26,7 +26,7 @@ BkPPS.find({bk:bks[j]}, function(err, rep){
 	geocoder.geocode(rep).then(res=>{
 		let i=0;
 		console.log('working on ' + bks[j]);
-		var name = bks[j].slice(0, -3);
+		var name = bks[j];
 		j++;
 		if(j<bks.length) getPPSCoord();
 		try{

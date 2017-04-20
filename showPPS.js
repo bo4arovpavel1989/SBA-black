@@ -6,15 +6,13 @@ var CitiesInfo = require('./lib/models/mongoModel.js').CitiesInfo;
 var cities=[];
 
 BkPPS.find({}, function(err, reps){
-	reps.forEach(rep=>{
-		fs.appendFile('BKPPS.dat', rep +  '\r\n');
-	});
+	console.log(reps.length);
 });
 BkPPSCoordinates.find({}, function(err, rep){
 	console.log(rep.length);
 });
 
-
+//writing CitiInfo in file
 /*
 CitiesInfo.find({}).sort({name: 1}).exec(function(err, reps){
 	
@@ -43,8 +41,8 @@ CitiesStats.find({}, function(err, rep){
 
 
 
+//acquiring cities list for CityStat collection from the list of PPS Coordinates
 /*
-
 let bks=['olimp', 'leon', '888', 'winline', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
 
 bks.forEach(bk=>{
@@ -61,10 +59,11 @@ bks.forEach(bk=>{
 	});
 });*/
 
-/*commented in prupose not to write extra data (second portion of pps)
-let bks=['atlantik-mpps', 'betringpps', 'betrupps', 'digitalbettingpps', 'favoritpps', 'firmastompps', 'fortunapps', 'investcompcentrpps', 'investgarantpps',
-'johnygamepps', 'marathonpps', 'matchbetpps', 'melofonpps', 'panoramapps', 'rosbetpps', 'rosippodromipps', 'rusteletotpps', 'sportbetpps', 'starbetpps', 
-'williamhillpps', 'winlinepps'];
+//writing pps coordinates in json in order to place it on th emap
+/*
+let bks=['atlantik-m', 'betring', 'betru', 'digitalbetting', 'favorit', 'firmastom', 'fortuna', 'investcompcentr', 'investgarant',
+'johnygame', 'marathon', 'matchbet', 'melofon', 'panorama', 'rosbet', 'rosippodromi', 'rusteletot', 'sportbet', 'starbet', 
+'williamhill', 'winline', 'olimp', 'leon', '888', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
 
 bks.forEach(bk=>{
 	BkPPSCoordinates.find({bk: bk}, function(err, rep){
@@ -74,60 +73,6 @@ bks.forEach(bk=>{
 });*/
 
 
-
-
-
-
-/* commented in prupose not to write extra data
-let bks=['olimp', 'leon', '888', 'winline', 'fonbet', 'baltbet', '1xstavka', 'ligastavok'];
-
-bks.forEach(bk=>{
-	BkPPSCoordinates.find({bk: bk}, function(err, rep){
-		rep=JSON.stringify(rep);
-		fs.writeFile('bkpps/ppscoordinates' + bk + '.json', rep);
-	});
-});*/
-
-
-
-
-
-
-/*
-
-BkPPS.find({bk:'leon'}, function(err, rep){
-	console.log('leon');
-	console.log(rep.length);
-});
-BkPPS.find({bk:'888'}, function(err, rep){
-	console.log('888');
-	console.log(rep.length);
-});
-BkPPS.find({bk:'fonbet'}, function(err, rep){
-	console.log('fonbet');
-	console.log(rep.length);
-});
-BkPPS.find({bk:'olimp'}, function(err, rep){
-	console.log('olimp');
-	console.log(rep.length);
-});
-BkPPS.find({bk:'baltbet'}, function(err, rep){
-	console.log('baltbet');
-	console.log(rep.length);
-});
-BkPPS.find({bk:'winline'}, function(err, rep){
-	console.log('winline');
-	console.log(rep.length);
-});
-BkPPS.find({bk:'ligastavok'}, function(err, rep){
-	console.log('ligastavok');
-	console.log(rep.length);
-});
-BkPPS.find({bk:'1xstavka'}, function(err, rep){
-	console.log('1xstavka');
-	console.log(rep.length);
-});
-*/
 
 //BkPPSCoordinates.find({}).remove().exec();
 //BkPPS.find({}).remove().exec();*/
