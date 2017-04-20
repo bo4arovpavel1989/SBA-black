@@ -18,13 +18,13 @@ nightmare
 		try {
 		let betType, sport, sportType, win, draw, away;
 		//console.log(line);
-		betType = line.parent.parent.parent.parent.children[1].children[1].attribs['data-top10'];
-		sport = line.prev.prev.children[5].attribs.href;
+		//betType = line.parent.parent.parent.parent.children[1].children[1].attribs['data-top10'];
+		sport = line.prev.prev.prev.prev.prev.prev.attribs.href;
 		sportType=sport.split('/')[1];
-		console.log(sportType);
-		win = line.children[1].children[0].attribs['data-coef'];if(win ==undefined) win='-';
-		draw = line.children[1].children[1].attribs['data-coef'];if(draw ==undefined) draw='-';
-		away = line.children[1].children[2].attribs['data-coef'];if(away ==undefined) away='-';
+		betType=sport.split('/')[0];
+		win = line.children[0].children[0].attribs['data-coef'];if(win ==undefined) win='-';
+		draw = line.children[0].children[1].attribs['data-coef'];if(draw ==undefined) draw='-';
+		away = line.children[0].children[2].attribs['data-coef'];if(away ==undefined) away='-';
 		let marja = 0;
 				if(win != '-' && win != 0) marja += 100/parseFloat(win);
 				if(draw != '-' && draw != 0) marja += 100/parseFloat(draw);
