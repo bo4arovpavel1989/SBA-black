@@ -13,7 +13,7 @@ BkPPSCoordinates.find({}, function(err, rep){
 });
 
 //writing CitiInfo in file
-/*
+
 CitiesInfo.find({}).sort({name: 1}).exec(function(err, reps){
 	
 	reps.forEach(rep=>{
@@ -22,9 +22,9 @@ CitiesInfo.find({}).sort({name: 1}).exec(function(err, reps){
 		rep.bkRelation.forEach(character=>{
 			if(character.bkQuantity!=0) relation += ' ' + character.bk + ' - ' + character.bkQuantity
 		});
-		fs.appendFile('ppsQuantityAndRelation.dat', rep.name + ' - ' + rep.population + 'чел. - ' + rep.bkQuantity + ' всего. '+ relation + '\r\n');
+		fs.appendFile('ppsQuantityAndRelation.dat', rep.name + ' - ' + rep.population + 'чел. - ' + 'Популярность - ' + rep.bkPopularity + '. Пунктов -  ' + rep.bkQuantity + ' всего. '+ relation + '\r\n');
 	});
-});*/
+});
 
 
 
