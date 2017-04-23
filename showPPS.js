@@ -12,10 +12,18 @@ BkPPSCoordinates.find({}, function(err, rep){
 	console.log(rep.length);
 });
 
-//writing CitiInfo in file
+CitiesInfo.find({}).sort({name: 1}).exec(function(err, reps){	
+	reps.forEach(rep=>{
+		console.log(rep.coordinates);
+	});
+});
 
-CitiesInfo.find({}).sort({name: 1}).exec(function(err, reps){
-	
+
+
+
+//writing CitiInfo in file
+/*
+CitiesInfo.find({}).sort({name: 1}).exec(function(err, reps){	
 	reps.forEach(rep=>{
 		console.log(rep.bkRelation);
 		let relation='';
@@ -24,7 +32,7 @@ CitiesInfo.find({}).sort({name: 1}).exec(function(err, reps){
 		});
 		fs.appendFile('ppsQuantityAndRelation.dat', rep.name + ' - ' + rep.population + 'чел. - ' + 'Популярность - ' + rep.bkPopularity + '. Пунктов -  ' + rep.bkQuantity + ' всего. '+ relation + '\r\n');
 	});
-});
+});*/
 
 
 
