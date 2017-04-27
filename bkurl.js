@@ -7,6 +7,7 @@ module.exports.bkurl = {
 		{site: 'winline', url: 'https://www.similarweb.com/website/winlinebet.ru'},
 		{site: '888', url: 'https://www.similarweb.com/website/888.ru'},
 		{site: 'olimp', url: 'https://www.similarweb.com/website/bkolimpbet.ru'},
-		{site: 'baltbet', url: 'https://www.similarweb.com/website/baltbet.ru'}
+		{site: 'baltbet', url: 'https://www.similarweb.com/website/baltbet.ru'},
+		{site: 'betcity', url: 'https://www.similarweb.com/website/betcity.ru'}
 		]
 };
