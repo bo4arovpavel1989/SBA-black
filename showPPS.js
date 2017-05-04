@@ -8,15 +8,13 @@ var cities=[];
 BkPPS.find({}, function(err, reps){
 	console.log(reps.length);
 });
-BkPPSCoordinates.find({}, function(err, rep){
-	console.log(rep.length);
-});
-
-CitiesInfo.find({}).sort({name: 1}).exec(function(err, reps){	
+BkPPSCoordinates.find({}, function(err, reps){
 	reps.forEach(rep=>{
-		console.log(rep.coordinates);
+		console.log(rep.data.geometry.coordinates);
+		fs.appendFile('ppsCoordinatesHeatMap.js', '[' + rep.data.geometry.coordinates + '],\r\n');
 	});
 });
+
 
 
 
