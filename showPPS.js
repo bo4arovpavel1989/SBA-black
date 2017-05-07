@@ -9,10 +9,9 @@ BkPPS.find({}, function(err, reps){
 	console.log(reps.length);
 });
 BkPPSCoordinates.find({}, function(err, reps){
-	reps.forEach(rep=>{
-		console.log(rep.data.geometry.coordinates);
-		fs.appendFile('ppsCoordinatesHeatMap.js', '[' + rep.data.geometry.coordinates + '],\r\n');
-	});
+	for (var i=0; i<((reps.length)/2); i++) {
+		fs.appendFile('ppsCoordinatesHeatMap.js', '[' + reps[i].data.geometry.coordinates + '],\r\n');
+	}
 });
 
 

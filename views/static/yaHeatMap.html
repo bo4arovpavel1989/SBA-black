@@ -28,8 +28,30 @@ var myMap = new ymaps.Map('map', {
         });
 		
 ymaps.modules.require(['Heatmap'], function (Heatmap) {
-         heatmap = new Heatmap(data);
-		   heatmap.options.set('opacity', 0.9);
+		    var  gradients = [{
+                    0.1: 'rgba(13, 255, 0, 0.7)',
+                    0.2: 'rgba(118, 240, 93, 0.7)',
+					0.3: 'rgba(124, 245, 12, 0.8)',
+					0.4: 'rgba(198, 245, 12, 0.8)',
+					0.5: 'rgba(218, 245, 12, 0.8)',
+					0.6: 'rgba(226, 240, 24, 0.8)',
+                    0.7: 'rgba(245, 206, 12, 0.9)',
+					0.8: 'rgba(240, 168, 24, 0.9)',
+					0.9: 'rgba(246, 113, 12, 0.9)',
+                    1.0: 'rgba(162, 36, 25, 1)'
+                }, {
+                    0.1: 'rgba(162, 36, 25, 0.7)',
+                    0.2: 'rgba(234, 72, 58, 0.8)',
+                    0.7: 'rgba(255, 255, 0, 0.9)',
+                    1.0: 'rgba(128, 255, 0, 1)'
+                }],
+                radiuses = [5, 10, 20, 30],
+                opacities = [0.4, 0.6, 0.8, 1];
+				var heatmap = new Heatmap(data, {
+                    gradient: gradients[0],
+                    radius: radiuses[0],
+                    opacity: opacities[3]
+                });
      heatmap.setMap(myMap);
 });		
  
